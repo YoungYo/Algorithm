@@ -78,6 +78,11 @@ template <typename T> class Vector{ //向量模板类
 
         //重载 “[]” 操作符，返回引用，这样才可以对返回值赋值
         int& operator[] (int i);
+
+		//判断向量是否为空
+		bool empty() {
+			return _size > 0 ? false : true;
+		}
 };
 
 /* 默认的构造函数 */
