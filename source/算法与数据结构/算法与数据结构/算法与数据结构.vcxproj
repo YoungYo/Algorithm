@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Application_of_Stack.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="ListNode.h" />
     <ClInclude Include="Stack.h" />

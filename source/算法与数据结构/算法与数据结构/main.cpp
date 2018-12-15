@@ -1,6 +1,6 @@
 #include <iostream>
 #include "LinkedList.h"
-#include "Stack.h"
+#include "Application_of_Stack.h"
 
 using namespace std;
 
@@ -28,20 +28,29 @@ void insertionSort(LinkedList<T> &list, ListNode<T>* p, int n) {
 }
 
 int main() {
-	Stack<int> s;
-	cout << s.size() << endl;
-	cout << s.empty() << endl;
-
-	s.push(1);
-	s.push(2);
-	s.push(3);
-
-	cout << s.size() << endl;
-	cout << s.top() << endl;
+	Stack<char> s;
+	convert(s, 19960206, 2);
 	while (s.empty() == false) {
-		cout << s.pop() << " ";
+		cout << s.pop();
 	}
+	//cout << s.size() << endl;
+	//cout << s.empty() << endl;
 
+	//s.push(1);
+	//s.push(2);
+	//s.push(3);
+
+	//cout << s.size() << endl;
+	//cout << s.top() << endl;
+
+	//int ascii = '0';
+	//for (int i = 0; i < 10; i++) {
+	//	printf("\'%c\', ", ascii + i);
+	//}
+	//ascii = 'A';
+	//for (int i = 0; i < 6; i++) {
+	//	printf("\'%c\', ", ascii + i);
+	//}
 	//LinkedList<int> list; //创建一个LinkedList对象
 
 	//list.insertAsLast(6); //作为末节点插入
