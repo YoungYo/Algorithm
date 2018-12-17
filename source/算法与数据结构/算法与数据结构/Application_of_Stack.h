@@ -13,7 +13,7 @@ void convert(Stack<char> &s, __int64 n, int base) { //迭代版
 	}
 }//新进制下由高到低的各数位，自顶而下保存在栈 s 中
 
-//void convert(Stack<char> &s, __int64 n, int base) { //递归版
+//void convert(Stack<char> &s, __int64 n, int base) { //将十进制转换成其他进制，递归版
 //	static char digit[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	//0 < n, 1 < base <= 16，新进制下的数位符号，可视 base 取值范围适当扩充
 //	if (n > 0) { //在尚有余数之前，反复地
@@ -21,3 +21,29 @@ void convert(Stack<char> &s, __int64 n, int base) { //迭代版
 //		convert(s, n / base, base); //通过递归得到所有更高位
 //	}
 //}//新进制下由高到低的各数位，自顶而下保存在栈 s 中
+
+/*检查表达式exp[low, high]中的括号是否匹配*/
+bool paren(const char exp[], int low, int high) {
+	Stack<char> S;
+	while (low <= high) {
+		switch (exp[low]) {
+			case '(':
+			case '[':
+			case '{':
+				S.push(exp[low]); break;
+			case ')':
+				if ((S.empty()) || ('(' != S.pop())) return false;
+				break;
+			case ']':
+				if ((S.empty()) || ('[' != S.pop())) return false;
+				break;
+			case '}':
+				if ((S.empty()) || ('{' != S.pop())) return false;
+				break;
+			default: break; //非括号字符一律忽略
+		}
+		low++;
+	}
+	return S.empty();
+}
+

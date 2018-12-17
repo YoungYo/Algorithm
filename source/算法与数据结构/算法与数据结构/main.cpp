@@ -28,11 +28,14 @@ void insertionSort(LinkedList<T> &list, ListNode<T>* p, int n) {
 }
 
 int main() {
-	Stack<char> s;
-	convert(s, 19960206, 2);
-	while (s.empty() == false) {
-		cout << s.pop();
-	}
+	char k[] = "{ ( ) [ ( { } ) ] }";
+	cout << paren(k, 0, 19) << endl;
+
+	//Stack<char> s;
+	//convert(s, 19960206, 2);
+	//while (s.empty() == false) {
+	//	cout << s.pop();
+	//}
 	//cout << s.size() << endl;
 	//cout << s.empty() << endl;
 
