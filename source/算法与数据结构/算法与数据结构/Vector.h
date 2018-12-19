@@ -80,7 +80,7 @@ template <typename T> class Vector{ //向量模板类
 		int size();
 
         //重载 “[]” 操作符，返回引用，这样才可以对返回值赋值
-        int& operator[] (int i);
+        T& operator[] (int i);
 
 		//判断向量是否为空
 		bool empty() {
@@ -314,6 +314,6 @@ inline int Vector<T>::size()
 }
 
 template<typename T>
-int& Vector<T>::operator[] (int i){
+T& Vector<T>::operator[] (int i){
     return _elem[i];
 }
