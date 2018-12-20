@@ -121,6 +121,7 @@
     <ClInclude Include="insertionSort.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="ListNode.h" />
+    <ClInclude Include="rpn.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="Vector.h" />

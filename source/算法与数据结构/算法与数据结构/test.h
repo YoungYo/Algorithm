@@ -1,4 +1,9 @@
-/*²âÊÔÓÃµÄÍ·ÎÄ¼ş*/
+ï»¿/******************************************************************************************
+ * å¦‚æœä½ å¯¹ä»£ç æœ‰ä»€ä¹ˆç–‘é—®ï¼Œå¯ä»¥å…³æ³¨å¾®ä¿¡å…¬ä¼—å·ï¼šAProgrammer
+ * æˆ–è€…æ·»åŠ ä½œè€…å¾®ä¿¡ï¼š91395421
+ * æˆ‘ä¼šå…è´¹ä¸ºä½ è§£ç­”
+ ******************************************************************************************/
+/*æµ‹è¯•ç”¨çš„å¤´æ–‡ä»¶*/
 #pragma once
 
 #include <iostream>
@@ -21,16 +26,59 @@ void print(LinkedList<T> list) {
 	}
 }
 
+void generateTable() {
+	//char optr[] = "+      -      *      /      ^      !      (      )      \\0";
+	char optr[] = { '+', '-', '*', '/', '^', '!', '(', ')', 'N' };
+
+	const char pri[N_OPTR][N_OPTR] = { //è¿ç®—ç¬¦ä¼˜å…ˆç­‰çº§ [æ ˆé¡¶] [å½“å‰]
+	   /*              |-------------------- å½“ å‰ è¿ ç®— ç¬¦ --------------------| */
+	   /*              +      -      *      /      ^      !      (      )      \0 */
+		/* --  + */    '>',   '>',   '<',   '<',   '<',   '<',   '<',   '>',   '>',
+		/* |   - */    '>',   '>',   '<',   '<',   '<',   '<',   '<',   '>',   '>',
+		/* æ ˆ  * */    '>',   '>',   '>',   '>',   '<',   '<',   '<',   '>',   '>',
+		/* é¡¶  / */    '>',   '>',   '>',   '>',   '<',   '<',   '<',   '>',   '>',
+		/* è¿  ^ */    '>',   '>',   '>',   '>',   '>',   '<',   '<',   '>',   '>',
+		/* ç®—  ! */    '>',   '>',   '>',   '>',   '>',   '>',   ' ',   '>',   '>',
+		/* ç¬¦  ( */    '<',   '<',   '<',   '<',   '<',   '<',   '<',   '=',   ' ',
+		/* |   ) */    ' ',   ' ',   ' ',   ' ',   ' ',   ' ',   ' ',   ' ',   ' ',
+		/* -- \0 */    '<',   '<',   '<',   '<',   '<',   '<',   '<',   ' ',   '='
+	};
+	cout << ".";
+	for (int i = 0; i < N_OPTR; i++) {
+		cout << ',' << optr[i];
+	}
+	cout << endl;
+	for (int i = 0; i < N_OPTR; i++) {
+		cout << optr[i];
+		for (int j = 0; j < N_OPTR; j++) {
+			cout << ',' << pri[i][j];
+		}
+		cout << endl;
+	}
+
+	//for (int i = 0; optr[i] != '\0'; i++) {
+	//	if (!isspace(optr[i])) cout << '\'';
+	//	while (!isspace(optr[i]) && optr[i]) cout << optr[i++];
+	//	if (!isspace(optr[i-1])) cout << "\', ";
+	//}
+}
+
 void test() {
 	//cout << facI(3) << endl;
-	char S[] = "(0! + 1) * 2 ^ (3 ! + 4) - ( 5 ! - 67 - ( 80 + 90 ) )";
+	//char S[] = "(0! + 1) * 2 ^ (3 ! + 4) - ( 5 ! - 67 - ( 80 + 90 ) )";
 	//char S[] = "0 + ( 1 + 23 )/ 4 * 5 * 67 - 8 + 9";
+	char S[] = "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3";
 
 	char* RPN = ( char* ) malloc ( sizeof ( char ) * 1 );   
-	RPN[0] = '\0'; //Äæ²¨À¼±í´ïÊ½
+	RPN[0] = '\0'; //é€†æ³¢å…°è¡¨è¾¾å¼
+	char* RPN1 = ( char* ) malloc ( sizeof ( char ) * 1 );   
+	RPN1[0] = '\0'; //é€†æ³¢å…°è¡¨è¾¾å¼
+	in2rpn(S, RPN1);
+	cout << RPN1 << endl;
+
 	cout << evaluate(S, RPN) << endl;
 	cout << RPN << endl;
-	cout << optr2rank('+') << endl;
+	//cout << optr2rank('+') << endl;
 	cout << evaluate(RPN) << endl;
 
 	//char k[] = "{ ( ) [ ( { } ) ] }";
@@ -59,9 +107,9 @@ void test() {
 	//for (int i = 0; i < 6; i++) {
 	//	printf("\'%c\', ", ascii + i);
 	//}
-	//LinkedList<int> list; //´´½¨Ò»¸öLinkedList¶ÔÏó
+	//LinkedList<int> list; //åˆ›å»ºä¸€ä¸ªLinkedListå¯¹è±¡
 
-	//list.insertAsLast(6); //×÷ÎªÄ©½Úµã²åÈë
+	//list.insertAsLast(6); //ä½œä¸ºæœ«èŠ‚ç‚¹æ’å…¥
 	//list.insertAsLast(5);
 	//list.insertAsLast(3);
 	//list.insertAsLast(1);
@@ -70,27 +118,27 @@ void test() {
 	//list.insertAsLast(2);
 	//list.insertAsLast(4);
 
-	//ListNode<int>* p = list.first(); //»ñÈ¡Ê×½ÚµãµÄÒıÓÃ
+	//ListNode<int>* p = list.first(); //è·å–é¦–èŠ‚ç‚¹çš„å¼•ç”¨
 
 	//int n = list.size();
-	//insertionSort(list, p, n); //list.size()ÊÇ»ñÈ¡Á´±íµÄ¹æÄ££¨¼´Á´±íÖĞµÄ½ÚµãÊı£©
+	//insertionSort(list, p, n); //list.size()æ˜¯è·å–é“¾è¡¨çš„è§„æ¨¡ï¼ˆå³é“¾è¡¨ä¸­çš„èŠ‚ç‚¹æ•°ï¼‰
 
 	//p = list.first();
 	//for (int i = 0; i < n; i++) {
-	//	cout << p->data << " "; //p->data Ö¸µÄÊÇ½Úµã p ÖĞ´æ´¢µÄÊı¾İ
-	//	p = p->succ; //Áî p Ö¸Ïò p µÄºó¼Ì
+	//	cout << p->data << " "; //p->data æŒ‡çš„æ˜¯èŠ‚ç‚¹ p ä¸­å­˜å‚¨çš„æ•°æ®
+	//	p = p->succ; //ä»¤ p æŒ‡å‘ p çš„åç»§
 	//}
 	//cout << endl;
 	//cout << endl;
 
-	//cout << "Á´±í¹æÄ££º" << list.size() << endl; //²âÊÔsize
-	//cout << "Á´±íÊÇ·ñÎª¿Õ£º" << list.empty() << endl; //²âÊÔsize
+	//cout << "é“¾è¡¨è§„æ¨¡ï¼š" << list.size() << endl; //æµ‹è¯•size
+	//cout << "é“¾è¡¨æ˜¯å¦ä¸ºç©ºï¼š" << list.empty() << endl; //æµ‹è¯•size
 
-	//ListNode<int> * first = list.first(); //²âÊÔfirst
-	//ListNode<int> * last = list.last(); //²âÊÔlast
+	//ListNode<int> * first = list.first(); //æµ‹è¯•first
+	//ListNode<int> * last = list.last(); //æµ‹è¯•last
 	//cout << first->data << ", " << last->data << endl;
-	//list.insertBefore(first, -1); //²âÊÔinsertBefore
-	//list.insertAfter(first, 0); //²âÊÔinsertAfter
+	//list.insertBefore(first, -1); //æµ‹è¯•insertBefore
+	//list.insertAfter(first, 0); //æµ‹è¯•insertAfter
 
 	//print(list);
 
@@ -98,24 +146,24 @@ void test() {
 	//ListNode<int>* q = first->succ->succ->succ;
 	//cout << q->data << endl;
 	//list.merge(p, 1, list, q, 1);
-	//list.sort(); //²âÊÔsort
-	//list.deduplicate(); //²âÊÔdeduplicate
+	//list.sort(); //æµ‹è¯•sort
+	//list.deduplicate(); //æµ‹è¯•deduplicate
 	//print(list);
 	//list.set(-1, 100);
 	//cout << list.get(7) << endl;
 	//list.uniquify();
 	//print(list);
-	//cout << "search: " << list.search(5, 5, last)->data << endl; //²âÊÔsearch
+	//cout << "search: " << list.search(5, 5, last)->data << endl; //æµ‹è¯•search
 
-	//cout << list.disordered() << endl; //²âÊÔdisordered
+	//cout << list.disordered() << endl; //æµ‹è¯•disordered
 
-	//cout << list.remove(list.first()->succ) << endl; //²âÊÔremove
+	//cout << list.remove(list.first()->succ) << endl; //æµ‹è¯•remove
 	//print(list);
 
-	//ListNode<int>* target = list.find(1, 5, list.last()); //²âÊÔfind
+	//ListNode<int>* target = list.find(1, 5, list.last()); //æµ‹è¯•find
 	//cout << target->data << endl;
 
-	//cout << list[3] << endl; //²âÊÔÖØÔØ²Ù×÷·û ¡°[]¡±
+	//cout << list[3] << endl; //æµ‹è¯•é‡è½½æ“ä½œç¬¦ â€œ[]â€
 	/*
 	int a[11] = { 1,2,2,3,4,4, 5,5,5,7,7};
 	int A[8] = { 19,14,96,10,20,15,4,26 };
