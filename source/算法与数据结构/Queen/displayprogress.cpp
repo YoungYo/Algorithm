@@ -30,6 +30,6 @@ void displayProgress ( Stack<Queen>& S, int nQueen ) { //在棋盘上显示搜查的进展
 	   displayRow(v[i]);
    if ( nQueen <= S.size() )
       cout  << nSolu << " solution(s) found after " << nCheck << " check(s)\a";
-   //getchar();
-   Sleep(1000);
+   getchar();
+   //Sleep(1000);
 }

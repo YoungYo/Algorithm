@@ -28,7 +28,7 @@ int main ( int argc, char* argv[] ) {
    //   fprintf ( stderr, "\nUsage: %s [-step] <nQueen(%d)>\n", argv[0], QUEEN_MAX );
    //   return -1;
    //}
-	int nQueen = 4;
+	int nQueen = 8;
 	runMode = Step;
    placeQueens ( nQueen ); //∆Ù∂Ø≤È’“
    cout  << nSolu << " solution(s) found after "
