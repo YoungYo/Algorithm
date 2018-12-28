@@ -9,7 +9,7 @@ typedef int Rank; //秩
 template <typename T> class Vector{ //向量模板类
     private: 
 		Rank _size; //规模 
-		int _capacity; //容量
+		int _capacity = 0; //容量
 		T* _elem; //数据区
 
     public:
@@ -317,5 +317,5 @@ inline int Vector<T>::size()
 
 template<typename T>
 T& Vector<T>::operator[] (int i){
-    return _elem[i];
+    return i < size? _elem[i] : 0;
 }

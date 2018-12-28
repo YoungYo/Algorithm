@@ -4,34 +4,54 @@
  * 我会免费为你解答
  ******************************************************************************************/
 #include <iostream>
-#include "LinkedList.h"
+#include "Queue.h"
+#include "CircularQueue.h"
 
 using namespace std;
 
 int main() {
+
+	CircularQueue<int> queue;
+	queue.enqueue(1);
+	queue.enqueue(2);
+	queue.enqueue(3);
+	queue.enqueue(4);
+	queue.enqueue(5);
+	queue.enqueue(6);
+	queue.enqueue(7);
+	queue.enqueue(8);
+	queue.enqueue(9);
+	queue.enqueue(10);
+
+	cout << queue.enqueue(11) << endl;
+
+	queue.dequeue();
+
+	cout << queue.front() << endl;
+	cout << queue.size() << endl;
 	
-	LinkedList<int> list; //创建一个LinkedList对象
+	//LinkedList<int> list; //创建一个LinkedList对象
 
-	list.insertAsLast(6); //作为末节点插入
-	list.insertAsLast(5);
-	list.insertAsLast(3);
-	list.insertAsLast(1);
-	list.insertAsLast(8);
-	list.insertAsLast(7);
-	list.insertAsLast(2);
-	list.insertAsLast(4);
+	//list.insertAsLast(6); //作为末节点插入
+	//list.insertAsLast(5);
+	//list.insertAsLast(3);
+	//list.insertAsLast(1);
+	//list.insertAsLast(8);
+	//list.insertAsLast(7);
+	//list.insertAsLast(2);
+	//list.insertAsLast(4);
 
-	ListNode<int>* p = list.first(); //获取首节点的引用
+	//ListNode<int>* p = list.first(); //获取首节点的引用
 
-	int n = list.size();
+	//int n = list.size();
 
-	p = list.first();
-	for (int i = 0; i < n; i++) {
-		cout << p->data << " "; //p->data 指的是节点 p 中存储的数据
-		p = p->succ; //令 p 指向 p 的后继
-	}
-	cout << endl;
-	cout << endl;
+	//p = list.first();
+	//for (int i = 0; i < n; i++) {
+	//	cout << p->data << " "; //p->data 指的是节点 p 中存储的数据
+	//	p = p->succ; //令 p 指向 p 的后继
+	//}
+	//cout << endl;
+	//cout << endl;
 
 	//cout << "链表规模：" << list.size() << endl; //测试size
 	//cout << "链表是否为空：" << list.empty() << endl; //测试size

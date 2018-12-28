@@ -17,7 +17,7 @@ bool labyrinth ( Cell Laby[LABY_MAX][LABY_MAX], Cell* s, Cell* t ) {
    do { //从起点出发不断试探、回溯，直到抵达终点，或者穷尽所有可能
       /*DSA*/displayLaby(); /*path.traverse(printLabyCell); printLabyCell(path.top());*/ 
 	  //getchar();
-	  Sleep(1000);
+	  Sleep(250);
       Cell* c = path.top(); //检查当前位置（栈顶）
       if ( c == t ) return true; //若已抵达终点，则找到了一条通路；否则，沿尚未试探的方向继续试探
       while ( NO_WAY > ( c->outgoing = nextESWN ( c->outgoing ) ) ) //逐一检查所有方向

@@ -115,8 +115,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CircularQueue.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="ListNode.h" />
+    <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
