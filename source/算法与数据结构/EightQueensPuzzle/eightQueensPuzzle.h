@@ -4,52 +4,12 @@
  * ÎÒ»áÃâ·ÑÎªÄã½â´ğ
  ******************************************************************************************/
 #pragma once
-#include <stdio.h>
-#include <iostream>
-using namespace std;
 #include "../DataStructure/Stack.h" //Õ»
-
-class Queen {
-public:
-	int x, y; //»ÊºóÔÚÆåÅÌÉÏµÄÎ»ÖÃ×ø±ê
-	Queen(int xx = 0, int yy = 0) : x(xx), y(yy) {};
-	bool operator==(Queen const& q) const { //ÖØÔØÅĞµÈ²Ù×÷·û£¬ÒÔ¼ì²â²»Í¬»ÊºóÖ®¼ä¿ÉÄÜµÄ³åÍ»
-		return (x == q.x) //ĞĞ³åÍ»£¬ÒòÎªÏŞÖÆÃ¿ĞĞÖ»ÄÜ·ÅÒ»¸ö»Êºó£¬ËùÒÔÕâÒ»Çé¿ö²¢²»»á·¢Éú£¬¿ÉÊ¡ÂÔ
-			|| (y == q.y) //ÁĞ³åÍ»
-			|| (x + y == q.x + q.y) //ÑØÕı¶Ô½ÇÏß³åÍ»
-			|| (x - y == q.x - q.y); //ÑØ·´¶Ô½ÇÏß³åÍ»
-	}
-	bool operator!= (Queen const& q) const { //ÖØÔØ²»µÈ²Ù×÷·û
-		return !(*this == q);
-	}
-};
-
+#include "queen.h" //Õ»
+#include "display.h" //Õ»
 
 int nSolu = 0; //½âµÄ×ÜÊı
 int nCheck = 0; //³¢ÊÔµÄ×Ü´ÎÊı
-int N; //ÆåÅÌ´óĞ¡
-
-Vector<Vector<Queen>> allSolution; //´æ·ÅËùÓĞµÄ½â
-
-void displayRow ( Queen& q ) { //´òÓ¡µ±Ç°»Êºó£¨·ÅÖÃÓÚcolÁĞ£©ËùÔÚĞĞ
-   printf ( "%2d: ", q.x );
-   int i = 0;
-   while ( i++ < q.y ) printf ( "[]" );
-   printf ( "¨€" );
-   while ( i++ < N ) printf ( "[]" );
-   printf ( "%2d\n", q.y );
-}
-
-void displaySolution(Vector<Queen> solu_vector) {
-	for (int i = 0; i < solu_vector.size(); i++)
-		displayRow(solu_vector[i]);
-	for (int i = 0; i < solu_vector.size(); i++) {
-		printf("(%d, %d) ", solu_vector[i].x, solu_vector[i].y);
-		if (i % 4 == 3)
-			cout << endl;
-	}
-	cout << endl;
-}
 
 void placeQueens ( int N ) { //N»ÊºóËã·¨£¨µü´ú°æ£©£º²ÉÓÃÊÔÌ½/»ØËİµÄ²ßÂÔ£¬½èÖúÕ»¼ÇÂ¼²éÕÒµÄ½á¹û
    Stack<Queen> solu; //´æ·Å£¨²¿·Ö£©½âµÄÕ»
@@ -67,7 +27,7 @@ void placeQueens ( int N ) { //N»ÊºóËã·¨£¨µü´ú°æ£©£º²ÉÓÃÊÔÌ½/»ØËİµÄ²ßÂÔ£¬½èÖúÕ»¼
             solu.push ( q ); //°ÚÉÏµ±Ç°»Êºó£¬²¢
 			if (N <= solu.size()) {
 				nSolu++; //Èô²¿·Ö½âÒÑ³ÉÎªÈ«¾Ö½â£¬ÔòÍ¨¹ıÈ«¾Ö±äÁ¿nSolu¼ÆÊı
-				displaySolution(solu.toVector());
+				displaySolution(solu.toVector(), N);
 			}
             q.x++; q.y = 0; //×ªÈëÏÂÒ»ĞĞ£¬´ÓµÚ0ÁĞ¿ªÊ¼£¬ÊÔÌ½ÏÂÒ»»Êºó
          }

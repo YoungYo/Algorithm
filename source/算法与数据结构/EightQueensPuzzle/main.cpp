@@ -4,10 +4,11 @@
  * 我会免费为你解答
  ******************************************************************************************/
 #include "eightQueensPuzzle.h"
+//#include "eightQueenPuzzle_pureArray.h"
 
 int main() {
-	N = 8;
-	placeQueens(N);
+	//placeQueensWithPureArray(8);
+	placeQueens(8);
 
 	cout << nSolu << " solution(s) found after " << nCheck << " check(s)\a";
 	system("pause");

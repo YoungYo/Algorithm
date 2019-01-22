@@ -317,5 +317,5 @@ inline int Vector<T>::size()
 
 template<typename T>
 T& Vector<T>::operator[] (int i){
-    return i < size? _elem[i] : 0;
+	return _elem[i];
 }

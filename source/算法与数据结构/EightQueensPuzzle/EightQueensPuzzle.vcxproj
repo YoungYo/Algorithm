@@ -115,7 +115,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="display.h" />
+    <ClInclude Include="eightQueenPuzzle_pureArray.h" />
     <ClInclude Include="eightQueensPuzzle.h" />
+    <ClInclude Include="queen.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
